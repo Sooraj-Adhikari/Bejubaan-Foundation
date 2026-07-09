@@ -319,8 +319,14 @@ export default function FounderStory() {
         }
 
         .story-sidebar {
-          position: sticky;
-          top: 100px;
+          position: static;
+        }
+
+        @media (min-width: 1024px) {
+          .story-sidebar {
+            position: sticky;
+            top: 100px;
+          }
         }
 
         .story-sidebar-card {

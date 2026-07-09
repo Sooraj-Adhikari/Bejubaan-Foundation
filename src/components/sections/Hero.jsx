@@ -83,10 +83,10 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
           
           <motion.div className="hero-actions" variants={itemVariants}>
             <motion.button 
-              onClick={onDonateClick}
+              type="button"
               className="btn btn-primary btn-lg"
+              style={{ cursor: 'not-allowed' }}
               whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
               transition={{ duration: 0.15 }}
             >
               <Heart size={20} fill="currentColor" />
