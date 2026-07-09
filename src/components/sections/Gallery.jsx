@@ -9,19 +9,19 @@ export default function Gallery() {
 
   const images = [
     {
-      src: "/hero_impact.jpg",
+      src: "/hero_impact.png",
       alt: "Indian volunteer feeding cow and dog",
       title: "Caring for Street Cows & Dogs",
       caption: "Direct feeding of nutritious meals prepared in residential areas."
     },
     {
-      src: "/gallery_collection.jpg",
+      src: "/gallery_collection.png",
       alt: "Volunteers collecting fresh roti from home",
       title: "Doorstep Surplus Collection",
       caption: "Fresh surplus food collected directly from households in steel containers."
     },
     {
-      src: "/gallery_dogs.jpg",
+      src: "/gallery_dogs.png",
       alt: "Street dogs eating food offered by volunteers",
       title: "Stray Animal Outreach",
       caption: "Ensuring stray dogs receive hygienic food in safe neighborhood areas."

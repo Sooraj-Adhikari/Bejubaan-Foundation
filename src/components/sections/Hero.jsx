@@ -113,7 +113,7 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
         >
           <div className="image-card-container">
             <img 
-              src="/hero_impact.jpg" 
+              src="/hero_impact.png" 
               alt="Kind volunteer feeding street cow and dog" 
               className="hero-image"
               loading="eager"
