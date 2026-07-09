@@ -291,7 +291,7 @@ export default function Volunteer() {
                           id="vol-reg-location"
                           required
                           className={`form-control ${touched.location && errors.location ? 'is-invalid' : ''}`}
-                          placeholder="e.g. Lucknow, Gomti Nagar"
+                          placeholder="e.g. New Delhi, Janakpuri"
                           value={location}
                           onBlur={() => handleBlur('location')}
                           onChange={(e) => {

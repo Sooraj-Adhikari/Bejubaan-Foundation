@@ -178,8 +178,8 @@ export default function Contact() {
               <div className="info-items">
                 {[
                   { icon: <Phone size={20} className="text-primary" />, label: 'Call / WhatsApp', content: <a href="tel:+919876543210">+91 98765 43210</a> },
-                  { icon: <Mail size={20} className="text-primary" />, label: 'Email Support', content: <a href="mailto:info@bejubaanseva.org">info@bejubaanseva.org</a> },
-                  { icon: <MapPin size={20} className="text-primary" />, label: 'Head Office', content: <span>Sector-4, Gomti Nagar, Lucknow, UP - 226010, India</span> },
+                  { icon: <Mail size={20} className="text-primary" />, label: 'Email Support', content: <a href="mailto:contact@bejubaanannsevafoundation.com">contact@bejubaanannsevafoundation.com</a> },
+                  { icon: <MapPin size={20} className="text-primary" />, label: 'Head Office', content: <span>807, DDA 2, District Center, Janakpuri, New Delhi – 110058, India</span> },
                   { icon: <Clock size={20} className="text-primary" />, label: 'Operating Hours', content: <span>7:00 AM - 8:00 PM (Monday - Sunday)</span> }
                 ].map((item, idx) => (
                   <div className="info-item" key={idx}>

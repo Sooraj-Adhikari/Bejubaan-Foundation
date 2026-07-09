@@ -8,7 +8,7 @@ export default function Testimonials() {
     {
       quote: "Like many Indian homes, we felt guilty about throwing away the first roti or surplus cooked rice. Bejubaan Foundation solved this. Their volunteers collect it daily, and knowing it feeds a street cow brings peace to our hearts.",
       author: "Mrs. Rekha Sharma",
-      role: "Household Food Donor, Lucknow",
+      role: "Household Food Donor, New Delhi",
       icon: "👩"
     },
     {
@@ -20,7 +20,7 @@ export default function Testimonials() {
     {
       quote: "We coordinated with the foundation during a wedding event. Instead of discarding surplus catering food, their team collected it and fed street animals responsibly. They make zero waste so simple.",
       author: "Amit Rastogi",
-      role: "Event Organiser, Gomti Nagar",
+      role: "Event Organiser, Janakpuri",
       icon: "👔"
     }
   ];
@@ -88,7 +88,11 @@ export default function Testimonials() {
               <p className="testimonial-text">{rev.quote}</p>
               
               <div className="testimonial-profile">
-                <div className="testimonial-avatar">{rev.icon}</div>
+                <img
+                  src="/reviewer_avatar.jpg"
+                  alt={rev.author}
+                  className="testimonial-avatar"
+                />
                 <div className="testimonial-meta">
                   <h4>{rev.author}</h4>
                   <span>{rev.role}</span>
@@ -173,10 +177,8 @@ export default function Testimonials() {
           border-radius: var(--radius-full);
           background-color: var(--color-white);
           border: 1px solid var(--color-border);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.3rem;
+          object-fit: cover;
+          flex-shrink: 0;
         }
 
         .testimonial-meta h4 {
