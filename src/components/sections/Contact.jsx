@@ -1,92 +1,47 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { submitFormToWeb3 } from '../../services/contactService';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    city: '',
-    purpose: 'general',
-    message: ''
-  });
-
-  // Validation States
-  const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
+  const [submittedData, setSubmittedData] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
 
   const shouldReduceMotion = useReducedMotion();
 
-  const validateForm = () => {
-    const tempErrors = {};
-    
-    if (!formData.name.trim()) {
-      tempErrors.name = 'Full name is required';
-    } else if (formData.name.trim().length < 3) {
-      tempErrors.name = 'Name must be at least 3 characters';
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      city: '',
+      purpose: 'general',
+      message: ''
     }
+  });
 
-    if (!formData.email.trim()) {
-      tempErrors.email = 'Email address is required';
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
-        tempErrors.email = 'Please enter a valid email address';
-      }
-    }
+  const onSubmit = async (data) => {
+    try {
+      setSubmitError(null);
+      await submitFormToWeb3(data, `Contact Form Submission from ${data.name}`);
+      setSubmittedData(data);
+      setSubmitted(true);
+      reset();
 
-    if (!formData.phone.trim()) {
-      tempErrors.phone = 'Phone number is required';
-    } else {
-      const cleaned = formData.phone.replace(/\D/g, '');
-      if (cleaned.length < 10) {
-        tempErrors.phone = 'Phone number must be at least 10 digits';
-      }
-    }
-
-    if (!formData.city.trim()) {
-      tempErrors.city = 'City is required';
-    } else if (formData.city.trim().length < 2) {
-      tempErrors.city = 'Please enter a valid city';
-    }
-
-    if (!formData.message.trim()) {
-      tempErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      tempErrors.message = 'Message must be at least 10 characters';
-    }
-
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
-  };
-
-  const handleBlur = (field) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
-    validateForm();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    setTouched({
-      name: true,
-      email: true,
-      phone: true,
-      city: true,
-      message: true
-    });
-
-    if (validateForm()) {
-      // Simulate brief loading state for premium feel
-      setIsSubmitting(true);
+      // Auto-hide success message after 5 seconds
       setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitted(true);
-        setErrors({});
-      }, 900);
+        setSubmitted(false);
+        setSubmittedData(null);
+      }, 5000);
+    } catch (error) {
+      setSubmitError(error.message || 'Unable to process your request at the moment.');
     }
   };
 
@@ -222,7 +177,7 @@ export default function Contact() {
           <motion.div className="contact-form-column" variants={columnReveal}>
             <div className="card form-card">
               <AnimatePresence mode="wait">
-                {submitted ? (
+                {submitted && submittedData ? (
                   <motion.div
                     key="success"
                     className="success-state text-center"
@@ -237,16 +192,16 @@ export default function Contact() {
                     </motion.div>
                     <h3>Message Sent!</h3>
                     <p className="lead">
-                      Thank you for reaching out, {formData.name || 'friend'}.
+                      Thank you for reaching out, {submittedData.name || 'friend'}.
                     </p>
                     <p className="success-guidance">
-                      We have received your message regarding <strong>{getPurposeLabel(formData.purpose)}</strong>. Our administration team will review your message and reply via email (<strong>{formData.email}</strong>) or call you on <strong>{formData.phone}</strong> as soon as possible.
+                      We have received your message regarding <strong>{getPurposeLabel(submittedData.purpose)}</strong>. Our administration team will review your message and reply via email (<strong>{submittedData.email}</strong>) or call you on <strong>{submittedData.phone}</strong> as soon as possible.
                     </p>
                     <button 
                       onClick={() => {
                         setSubmitted(false);
-                        setFormData({ name: '', email: '', phone: '', city: '', purpose: 'general', message: '' });
-                        setTouched({});
+                        setSubmittedData(null);
+                        setSubmitError(null);
                       }} 
                       className="btn btn-outline btn-sm btn-center"
                     >
@@ -256,7 +211,7 @@ export default function Contact() {
                 ) : (
                   <motion.form
                     key="form"
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmit(onSubmit)}
                     className="contact-form"
                     noValidate
                     initial={{ opacity: 0 }}
@@ -272,26 +227,30 @@ export default function Contact() {
                       <motion.input
                         type="text"
                         id="contact-name"
-                        required
-                        className={`form-control ${touched.name && errors.name ? 'is-invalid' : ''}`}
+                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                         placeholder="Your full name"
-                        value={formData.name}
-                        onBlur={() => handleBlur('name')}
-                        onChange={(e) => {
-                          setFormData({ ...formData, name: e.target.value });
-                          if (touched.name) validateForm();
-                        }}
+                        aria-invalid={errors.name ? "true" : "false"}
+                        aria-describedby={errors.name ? "name-error" : undefined}
+                        {...register('name', {
+                          required: 'Full name is required',
+                          minLength: {
+                            value: 3,
+                            message: 'Name must be at least 3 characters'
+                          }
+                        })}
                         whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                         transition={{ duration: 0.2 }}
                       />
                       <AnimatePresence>
-                        {touched.name && errors.name && (
+                        {errors.name && (
                           <motion.span
+                            id="name-error"
                             className="error-message"
+                            role="alert"
                             {...errorFade}
                           >
                             <AlertCircle size={14} />
-                            {errors.name}
+                            {errors.name.message}
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -304,23 +263,30 @@ export default function Contact() {
                         <motion.input
                           type="email"
                           id="contact-email"
-                          required
-                          className={`form-control ${touched.email && errors.email ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                           placeholder="name@example.com"
-                          value={formData.email}
-                          onBlur={() => handleBlur('email')}
-                          onChange={(e) => {
-                            setFormData({ ...formData, email: e.target.value });
-                            if (touched.email) validateForm();
-                          }}
+                          aria-invalid={errors.email ? "true" : "false"}
+                          aria-describedby={errors.email ? "email-error" : undefined}
+                          {...register('email', {
+                            required: 'Email address is required',
+                            pattern: {
+                              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                              message: 'Please enter a valid email address'
+                            }
+                          })}
                           whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                           transition={{ duration: 0.2 }}
                         />
                         <AnimatePresence>
-                          {touched.email && errors.email && (
-                            <motion.span className="error-message" {...errorFade}>
+                          {errors.email && (
+                            <motion.span 
+                              id="email-error"
+                              className="error-message" 
+                              role="alert"
+                              {...errorFade}
+                            >
                               <AlertCircle size={14} />
-                              {errors.email}
+                              {errors.email.message}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -332,23 +298,27 @@ export default function Contact() {
                         <motion.input
                           type="tel"
                           id="contact-phone"
-                          required
-                          className={`form-control ${touched.phone && errors.phone ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                           placeholder="Mobile Number"
-                          value={formData.phone}
-                          onBlur={() => handleBlur('phone')}
-                          onChange={(e) => {
-                            setFormData({ ...formData, phone: e.target.value });
-                            if (touched.phone) validateForm();
-                          }}
+                          aria-invalid={errors.phone ? "true" : "false"}
+                          aria-describedby={errors.phone ? "phone-error" : undefined}
+                          {...register('phone', {
+                            required: 'Phone number is required',
+                            validate: value => value.replace(/\D/g, '').length >= 10 || 'Phone number must be at least 10 digits'
+                          })}
                           whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                           transition={{ duration: 0.2 }}
                         />
                         <AnimatePresence>
-                          {touched.phone && errors.phone && (
-                            <motion.span className="error-message" {...errorFade}>
+                          {errors.phone && (
+                            <motion.span 
+                              id="phone-error"
+                              className="error-message" 
+                              role="alert"
+                              {...errorFade}
+                            >
                               <AlertCircle size={14} />
-                              {errors.phone}
+                              {errors.phone.message}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -362,23 +332,30 @@ export default function Contact() {
                         <motion.input
                           type="text"
                           id="contact-city"
-                          required
-                          className={`form-control ${touched.city && errors.city ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.city ? 'is-invalid' : ''}`}
                           placeholder="Your City"
-                          value={formData.city}
-                          onBlur={() => handleBlur('city')}
-                          onChange={(e) => {
-                            setFormData({ ...formData, city: e.target.value });
-                            if (touched.city) validateForm();
-                          }}
+                          aria-invalid={errors.city ? "true" : "false"}
+                          aria-describedby={errors.city ? "city-error" : undefined}
+                          {...register('city', {
+                            required: 'City is required',
+                            minLength: {
+                              value: 2,
+                              message: 'Please enter a valid city'
+                            }
+                          })}
                           whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                           transition={{ duration: 0.2 }}
                         />
                         <AnimatePresence>
-                          {touched.city && errors.city && (
-                            <motion.span className="error-message" {...errorFade}>
+                          {errors.city && (
+                            <motion.span 
+                              id="city-error"
+                              className="error-message" 
+                              role="alert"
+                              {...errorFade}
+                            >
                               <AlertCircle size={14} />
-                              {errors.city}
+                              {errors.city.message}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -390,13 +367,12 @@ export default function Contact() {
                         <select
                           id="contact-purpose"
                           className="form-control"
-                          value={formData.purpose}
-                          onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                          {...register('purpose')}
                         >
                           <option value="general">General Inquiry</option>
                           <option value="donation-drive">Sponsor Fodder/Grain Drive</option>
                           <option value="restaurant-tieup">Restaurant / Caterer Tie-up</option>
-                          
+                          <option value="medical">Report Injured Street Animal</option>
                         </select>
                       </div>
                     </div>
@@ -406,28 +382,52 @@ export default function Contact() {
                       <label htmlFor="contact-message" className="form-label">Message</label>
                       <motion.textarea
                         id="contact-message"
-                        required
                         rows="4"
-                        className={`form-control ${touched.message && errors.message ? 'is-invalid' : ''}`}
+                        className={`form-control ${errors.message ? 'is-invalid' : ''}`}
                         placeholder="Write your message here (min. 10 characters)..."
-                        value={formData.message}
-                        onBlur={() => handleBlur('message')}
-                        onChange={(e) => {
-                          setFormData({ ...formData, message: e.target.value });
-                          if (touched.message) validateForm();
-                        }}
+                        aria-invalid={errors.message ? "true" : "false"}
+                        aria-describedby={errors.message ? "message-error" : undefined}
+                        {...register('message', {
+                          required: 'Message is required',
+                          minLength: {
+                            value: 10,
+                            message: 'Message must be at least 10 characters'
+                          }
+                        })}
                         whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                         transition={{ duration: 0.2 }}
                       />
                       <AnimatePresence>
-                        {touched.message && errors.message && (
-                          <motion.span className="error-message" {...errorFade}>
+                        {errors.message && (
+                          <motion.span 
+                            id="message-error"
+                            className="error-message" 
+                            role="alert"
+                            {...errorFade}
+                          >
                             <AlertCircle size={14} />
-                            {errors.message}
+                            {errors.message.message}
                           </motion.span>
                         )}
                       </AnimatePresence>
                     </div>
+
+                    {/* Submission Error Banner */}
+                    <AnimatePresence>
+                      {submitError && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="error-message"
+                          style={{ marginBottom: '1.25rem', fontSize: '0.9rem', gap: '0.5rem' }}
+                          role="alert"
+                        >
+                          <AlertCircle size={16} />
+                          <span>{submitError}</span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
                     <motion.button
                       type="submit"

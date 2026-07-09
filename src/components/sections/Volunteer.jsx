@@ -1,58 +1,45 @@
 import React, { useState } from 'react';
 import { Heart, CheckCircle, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { submitFormToWeb3 } from '../../services/contactService';
 
 export default function Volunteer() {
   const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [location, setLocation] = useState('');
-  const [vehicle, setVehicle] = useState('two-wheeler');
-  
-  // Validation State
-  const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
+  const [submittedData, setSubmittedData] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
 
   const shouldReduceMotion = useReducedMotion();
 
-  const validateForm = () => {
-    const tempErrors = {};
-    if (!name.trim()) {
-      tempErrors.name = 'Full Name is required';
-    } else if (name.trim().length < 3) {
-      tempErrors.name = 'Name must be at least 3 characters';
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      phone: '',
+      location: '',
+      vehicle: 'two-wheeler'
     }
+  });
 
-    if (!phone.trim()) {
-      tempErrors.phone = 'Phone number is required';
-    } else {
-      const cleaned = phone.replace(/\D/g, '');
-      if (cleaned.length < 10) {
-        tempErrors.phone = 'Phone number must be at least 10 digits';
-      }
-    }
-
-    if (!location.trim()) {
-      tempErrors.location = 'City / Locality is required';
-    } else if (location.trim().length < 3) {
-      tempErrors.location = 'Please enter a valid neighborhood or city';
-    }
-
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
-  };
-
-  const handleBlur = (field) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
-    validateForm();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTouched({ name: true, phone: true, location: true });
-    if (validateForm()) {
+  const onSubmit = async (data) => {
+    try {
+      setSubmitError(null);
+      await submitFormToWeb3(data, `Volunteer Registration: ${data.name}`);
+      setSubmittedData(data);
       setSubmitted(true);
-      setErrors({});
+      reset();
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setSubmittedData(null);
+      }, 5000);
+    } catch (error) {
+      setSubmitError(error.message || 'Unable to process your request at the moment.');
     }
   };
 
@@ -179,7 +166,7 @@ export default function Volunteer() {
               viewport={{ once: true, margin: '-80px' }}
             >
               <AnimatePresence mode="wait">
-                {submitted ? (
+                {submitted && submittedData ? (
                   <motion.div
                     key="success"
                     className="success-state text-center"
@@ -194,18 +181,16 @@ export default function Volunteer() {
                     </motion.div>
                     <h3>Welcome to the Team!</h3>
                     <p className="lead">
-                      Thank you, {name}! Your willingness to volunteer represents true compassion.
+                      Thank you, {submittedData.name || 'friend'}! Your willingness to volunteer represents true compassion.
                     </p>
                     <p className="success-guidance">
-                      Our coordination coordinator for <strong>{location}</strong> will call you on <strong>{phone}</strong> within 24 hours to schedule a short onboarding discussion.
+                      Our coordination coordinator for <strong>{submittedData.location}</strong> will call you on <strong>{submittedData.phone}</strong> within 24 hours to schedule a short onboarding discussion.
                     </p>
                     <button 
                       onClick={() => {
                         setSubmitted(false);
-                        setName('');
-                        setPhone('');
-                        setLocation('');
-                        setTouched({});
+                        setSubmittedData(null);
+                        setSubmitError(null);
                       }} 
                       className="btn btn-outline btn-sm btn-center"
                     >
@@ -215,7 +200,7 @@ export default function Volunteer() {
                 ) : (
                   <motion.form
                     key="form"
-                    onSubmit={handleSubmit}
+                    onSubmit={handleSubmit(onSubmit)}
                     className="volunteer-form"
                     noValidate
                     initial={{ opacity: 0 }}
@@ -232,23 +217,25 @@ export default function Volunteer() {
                       <motion.input
                         type="text"
                         id="vol-reg-name"
-                        required
-                        className={`form-control ${touched.name && errors.name ? 'is-invalid' : ''}`}
+                        className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                         placeholder="Your Full Name"
-                        value={name}
-                        onBlur={() => handleBlur('name')}
-                        onChange={(e) => {
-                          setName(e.target.value);
-                          if (touched.name) validateForm();
-                        }}
+                        aria-invalid={errors.name ? "true" : "false"}
+                        aria-describedby={errors.name ? "vol-name-error" : undefined}
+                        {...register('name', {
+                          required: 'Full Name is required',
+                          minLength: {
+                            value: 3,
+                            message: 'Name must be at least 3 characters'
+                          }
+                        })}
                         whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                         transition={{ duration: 0.2 }}
                       />
                       <AnimatePresence>
-                        {touched.name && errors.name && (
-                          <motion.span className="error-message" {...errorFade}>
+                        {errors.name && (
+                          <motion.span id="vol-name-error" className="error-message" role="alert" {...errorFade}>
                             <AlertCircle size={14} />
-                            {errors.name}
+                            {errors.name.message}
                           </motion.span>
                         )}
                       </AnimatePresence>
@@ -261,23 +248,22 @@ export default function Volunteer() {
                         <motion.input
                           type="tel"
                           id="vol-reg-phone"
-                          required
-                          className={`form-control ${touched.phone && errors.phone ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                           placeholder="10-digit Mobile Number"
-                          value={phone}
-                          onBlur={() => handleBlur('phone')}
-                          onChange={(e) => {
-                            setPhone(e.target.value);
-                            if (touched.phone) validateForm();
-                          }}
+                          aria-invalid={errors.phone ? "true" : "false"}
+                          aria-describedby={errors.phone ? "vol-phone-error" : undefined}
+                          {...register('phone', {
+                            required: 'Phone number is required',
+                            validate: value => value.replace(/\D/g, '').length >= 10 || 'Phone number must be at least 10 digits'
+                          })}
                           whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                           transition={{ duration: 0.2 }}
                         />
                         <AnimatePresence>
-                          {touched.phone && errors.phone && (
-                            <motion.span className="error-message" {...errorFade}>
+                          {errors.phone && (
+                            <motion.span id="vol-phone-error" className="error-message" role="alert" {...errorFade}>
                               <AlertCircle size={14} />
-                              {errors.phone}
+                              {errors.phone.message}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -289,23 +275,25 @@ export default function Volunteer() {
                         <motion.input
                           type="text"
                           id="vol-reg-location"
-                          required
-                          className={`form-control ${touched.location && errors.location ? 'is-invalid' : ''}`}
+                          className={`form-control ${errors.location ? 'is-invalid' : ''}`}
                           placeholder="e.g. New Delhi, Janakpuri"
-                          value={location}
-                          onBlur={() => handleBlur('location')}
-                          onChange={(e) => {
-                            setLocation(e.target.value);
-                            if (touched.location) validateForm();
-                          }}
+                          aria-invalid={errors.location ? "true" : "false"}
+                          aria-describedby={errors.location ? "vol-location-error" : undefined}
+                          {...register('location', {
+                            required: 'City / Locality is required',
+                            minLength: {
+                              value: 3,
+                              message: 'Please enter a valid neighborhood or city'
+                            }
+                          })}
                           whileFocus={shouldReduceMotion ? {} : { scale: 1.005 }}
                           transition={{ duration: 0.2 }}
                         />
                         <AnimatePresence>
-                          {touched.location && errors.location && (
-                            <motion.span className="error-message" {...errorFade}>
+                          {errors.location && (
+                            <motion.span id="vol-location-error" className="error-message" role="alert" {...errorFade}>
                               <AlertCircle size={14} />
-                              {errors.location}
+                              {errors.location.message}
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -318,8 +306,7 @@ export default function Volunteer() {
                       <select
                         id="vol-reg-vehicle"
                         className="form-control"
-                        value={vehicle}
-                        onChange={(e) => setVehicle(e.target.value)}
+                        {...register('vehicle')}
                       >
                         <option value="two-wheeler">Two Wheeler (Bike/Scooter)</option>
                         <option value="four-wheeler">Four Wheeler (Car/Eco)</option>
@@ -327,15 +314,42 @@ export default function Volunteer() {
                       </select>
                     </div>
 
+                    {/* Submission Error Banner */}
+                    <AnimatePresence>
+                      {submitError && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="error-message"
+                          style={{ marginBottom: '1.25rem', fontSize: '0.9rem', gap: '0.5rem' }}
+                          role="alert"
+                        >
+                          <AlertCircle size={16} />
+                          <span>{submitError}</span>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
                     <motion.button
                       type="submit"
                       className="btn btn-primary btn-submit"
-                      whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                      whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+                      disabled={isSubmitting}
+                      whileHover={shouldReduceMotion || isSubmitting ? {} : { scale: 1.02 }}
+                      whileTap={shouldReduceMotion || isSubmitting ? {} : { scale: 0.97 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
                     >
-                      <Heart size={18} fill="currentColor" />
-                      <span>Join the Movement</span>
+                      {isSubmitting ? (
+                        <>
+                          <span className="btn-spinner" />
+                          <span>Sending…</span>
+                        </>
+                      ) : (
+                        <>
+                          <Heart size={18} fill="currentColor" />
+                          <span>Join the Movement</span>
+                        </>
+                      )}
                     </motion.button>
                   </motion.form>
                 )}
