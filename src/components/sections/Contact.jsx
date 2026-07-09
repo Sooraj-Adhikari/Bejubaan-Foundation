@@ -374,7 +374,7 @@ export default function Contact() {
                           <option value="general">General Inquiry</option>
                           <option value="donation-drive">Sponsor Fodder/Grain Drive</option>
                           <option value="restaurant-tieup">Restaurant / Caterer Tie-up</option>
-                          <option value="medical">Report Injured Street Animal</option>
+                         
                         </select>
                       </div>
                     </div>
