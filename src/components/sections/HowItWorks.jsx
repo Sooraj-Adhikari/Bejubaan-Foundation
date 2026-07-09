@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Truck, Heart } from 'lucide-react';
+import { Utensils, Truck, ClipboardCheck, Package, Heart, FileText } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 export default function HowItWorks() {
@@ -8,21 +8,39 @@ export default function HowItWorks() {
   const steps = [
     {
       num: "01",
-      icon: <FileText size={24} />,
-      title: "Tell Us About Surplus",
-      desc: "Use our quick online form to log your available surplus food, fodder, or grain and your approximate location."
+      icon: <Utensils size={24} />,
+      title: "Food Donor",
+      desc: "Food donors (families, events, or restaurants) notify us of fresh surplus meals."
     },
     {
       num: "02",
       icon: <Truck size={24} />,
-      title: "Volunteer Coordination",
-      desc: "Our localized system flags the request, prompting a nearby volunteer to pick up the food in clean, closed boxes."
+      title: "Collection",
+      desc: "Nearby volunteers are coordinated to quickly collect the food in clean containers."
     },
     {
       num: "03",
+      icon: <ClipboardCheck size={24} />,
+      title: "Quality Check",
+      desc: "Collected meals undergo strict inspection to ensure they are safe and healthy for animals."
+    },
+    {
+      num: "04",
+      icon: <Package size={24} />,
+      title: "Hygienic Packing",
+      desc: "Inspected food is packed cleanly to prevent contamination during transport."
+    },
+    {
+      num: "05",
       icon: <Heart size={24} fill="currentColor" />,
-      title: "Responsible Feeding",
-      desc: "After verifying food hygiene and suitability, volunteers distribute it to street cows, dogs, or birds in the area."
+      title: "Distribution",
+      desc: "Volunteers distribute the nourishing meals directly to street cows, dogs, and birds."
+    },
+    {
+      num: "06",
+      icon: <FileText size={24} />,
+      title: "Impact Documentation",
+      desc: "Every feeding drive is logged with photos and reports to maintain absolute transparency."
     }
   ];
 
@@ -91,7 +109,7 @@ export default function HowItWorks() {
               </div>
               <h4>{step.title}</h4>
               <p>{step.desc}</p>
-              {idx < steps.length - 1 && <div className="how-step-connector"></div>}
+              {idx < steps.length - 1 && (idx + 1) % 3 !== 0 && <div className="how-step-connector"></div>}
             </motion.div>
           ))}
         </motion.div>

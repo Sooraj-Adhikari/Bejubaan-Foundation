@@ -156,7 +156,7 @@ export default function Contact() {
           <span className="badge badge-accent">Contact Us</span>
           <h2>Reach Out to Our Team</h2>
           <p className="lead section-subtitle">
-            Have questions about food safety, want to coordinate collections at an event, or report an issue? Get in touch today.
+            Get in touch to donate suitable surplus food, join us as a volunteer, partner with our foundation, or help spread awareness in your neighborhood.
           </p>
         </motion.div>
 

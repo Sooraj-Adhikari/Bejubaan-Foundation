@@ -127,7 +127,7 @@ export default function ImpactStats() {
           <span className="badge badge-secondary">Our Impact</span>
           <h2>The Difference We Make Together</h2>
           <p className="lead section-subtitle">
-            Every roti, every hour volunteered, and every small contribution adds up. Together, we are building a compassionate feeding movement.
+            By transforming surplus food through responsible collection and safe feeding, we nurture healthier street animals and create a cleaner environment. Guided by transparency, we maintain detailed feeding reports, volunteer records, and impact updates to ensure complete accountability.
           </p>
         </motion.div>
 
@@ -167,7 +167,7 @@ export default function ImpactStats() {
           <div className="banner-content">
             <h3>"Even one extra roti can save a life."</h3>
             <p>
-              When hundreds of families pool their surplus, we create a system where no animal goes hungry. Your routine remains the same; the only change is that food is given a purpose instead of being wasted.
+              Food waste contributes to environmental pollution, while hungry stray animals are often forced to consume unsafe waste. Responsible food donation provides a vital alternative, directly benefiting both the animals we feed and the communities we live in.
             </p>
           </div>
         </motion.div>

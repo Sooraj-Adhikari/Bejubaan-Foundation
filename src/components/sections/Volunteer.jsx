@@ -117,7 +117,7 @@ export default function Volunteer() {
     {
       icon: '🤝',
       title: 'Strong Community Network',
-      desc: 'Partner with residents, local caterers, and shelters in your region.'
+      desc: 'We collaborate with Restaurants, Hotels, Housing Societies, Corporate Offices, Educational Institutions, and Community Groups to build a compassionate network.'
     }
   ];
 
@@ -150,7 +150,7 @@ export default function Volunteer() {
                 Become a Bridge of Hope
               </motion.h2>
               <motion.p className="lead promo-lead" variants={bulletReveal}>
-                The Bejubaan movement relies entirely on active, compassionate citizens. Join us to make animal care a shared community value.
+                Our volunteers serve as the vital bridge connecting generous food donors with hungry street animals. Join us to make animal care a shared community value.
               </motion.p>
               
               <div className="promo-bullets">

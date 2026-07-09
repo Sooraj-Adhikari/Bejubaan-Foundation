@@ -60,7 +60,7 @@ export default function About() {
               Bejubaan Ann Seva Foundation was founded to turn a daily household challenge—surplus fresh food—into a system of compassion.
             </p>
             <p>
-              In our fast-paced modern lifestyles, thousands of families sincerely wish to care for street animals. However, time constraints make it difficult to go out and feed cows or dogs every day. As a result, fresh, nutritious surplus meals are often discarded. We offer a simple, volunteer-driven solution that collects suitable surplus food right from your doorstep and delivers it to street cows, dogs, and birds.
+              In our fast-paced modern lifestyles, thousands of families sincerely wish to care for street animals. However, time constraints make it difficult to go out and feed cows or dogs every day. As a result, fresh, nutritious surplus meals are often discarded. We offer a simple, volunteer-driven solution that collects suitable surplus food right from your doorstep and delivers it to street cows, dogs, and birds. By actively reducing food wastage, promoting animal welfare, and supporting environmental sustainability, we drive positive change through active community participation and volunteer engagement.
             </p>
 
             <div className="pillars-grid">
@@ -88,7 +88,7 @@ export default function About() {
                 </motion.div>
                 <div>
                   <h4>Zero Food Waste</h4>
-                  <p>Working actively in communities and restaurants to ensure no edible meal ends up in dustbins.</p>
+                  <p>Supporting cleaner neighborhoods through reduced food waste, responsible food management, and sustainable community participation.</p>
                 </div>
               </div>
 

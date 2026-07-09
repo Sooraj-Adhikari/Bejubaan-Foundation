@@ -74,10 +74,10 @@ export default function MissionVision() {
             </div>
             <h3>Our Mission</h3>
             <p className="lead">
-              To connect households, restaurants, and events with a network of dedicated volunteers who collect clean, surplus food and deliver it directly to street animals.
+              To facilitate the collection of fresh surplus food and ensure its responsible distribution to street animals through our network of dedicated volunteers.
             </p>
             <p>
-              We aim to reduce municipal food waste while nourishing street cows, stray dogs, and birds, making animal welfare simple, structured, and accessible for everyone.
+              By channeling compassion through Ann Daan, we aim to nurture healthier stray animals, foster cleaner communities, and reduce food waste, making animal welfare structured and accessible.
             </p>
           </motion.div>
 
@@ -93,10 +93,10 @@ export default function MissionVision() {
             </div>
             <h3>Our Vision</h3>
             <p className="lead">
-              A community where no fresh food goes to waste, and no street animal suffers from hunger.
+              A future where no edible food is wasted, and no stray animal sleeps hungry.
             </p>
             <p>
-              We envision a future where neighborhood-level circular food systems are the norm, and caring for local street animals is integrated seamlessly into daily life.
+              Through active community participation, we envision creating a cleaner India where neighborhood-level circular food systems are the norm, and caring for street animals is a shared daily responsibility.
             </p>
           </motion.div>
 
