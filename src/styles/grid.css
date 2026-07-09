@@ -1,0 +1,242 @@
+/* ============================================
+   Bejubaan Ann Seva Foundation – Responsive Grid
+   ============================================ */
+
+/* ---- Container ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+  box-sizing: border-box;
+}
+
+.container-narrow {
+  max-width: var(--container-narrow-max-width);
+}
+
+.container-fluid {
+  max-width: 100%;
+}
+
+/* ---- Responsive Row (Flex-based) ---- */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: calc(var(--spacing-4) * -1);
+}
+
+.row > * {
+  padding-inline: var(--spacing-4);
+  box-sizing: border-box;
+}
+
+.row.gap-0 {
+  margin-inline: 0;
+}
+.row.gap-0 > * {
+  padding-inline: 0;
+}
+
+.row.gap-1 {
+  margin-inline: calc(var(--spacing-1) * -1);
+}
+.row.gap-1 > * {
+  padding-inline: var(--spacing-1);
+}
+
+.row.gap-2 {
+  margin-inline: calc(var(--spacing-2) * -1);
+}
+.row.gap-2 > * {
+  padding-inline: var(--spacing-2);
+}
+
+.row.gap-3 {
+  margin-inline: calc(var(--spacing-3) * -1);
+}
+.row.gap-3 > * {
+  padding-inline: var(--spacing-3);
+}
+
+.row.gap-4 {
+  margin-inline: calc(var(--spacing-4) * -1);
+}
+.row.gap-4 > * {
+  padding-inline: var(--spacing-4);
+}
+
+.row.gap-6 {
+  margin-inline: calc(var(--spacing-6) * -1);
+}
+.row.gap-6 > * {
+  padding-inline: var(--spacing-6);
+}
+
+/* ---- Grid (CSS Grid-based) ---- */
+.grid {
+  display: grid;
+  gap: var(--spacing-6);
+}
+
+.grid.gap-0 { gap: 0; }
+.grid.gap-1 { gap: var(--spacing-1); }
+.grid.gap-2 { gap: var(--spacing-2); }
+.grid.gap-3 { gap: var(--spacing-3); }
+.grid.gap-4 { gap: var(--spacing-4); }
+.grid.gap-6 { gap: var(--spacing-6); }
+.grid.gap-8 { gap: var(--spacing-8); }
+.grid.gap-10 { gap: var(--spacing-10); }
+.grid.gap-12 { gap: var(--spacing-12); }
+
+/* ---- Column Counts ---- */
+.cols-1 { grid-template-columns: repeat(1, 1fr); }
+.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cols-5 { grid-template-columns: repeat(5, 1fr); }
+.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* ---- Responsive Column Breakpoints ---- */
+
+/* Tablet landscape (≥ 1024px) – default */
+@media (max-width: 1200px) {
+  .cols-6 { grid-template-columns: repeat(3, 1fr); }
+  .cols-5 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tablet portrait (≥ 768px) */
+@media (max-width: 1023px) {
+  .cols-6 { grid-template-columns: repeat(2, 1fr); }
+  .cols-5 { grid-template-columns: repeat(2, 1fr); }
+  .cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile (≤ 767px) */
+@media (max-width: 767px) {
+  .cols-1,
+  .cols-2,
+  .cols-3,
+  .cols-4,
+  .cols-5,
+  .cols-6 {
+    grid-template-columns: 1fr;
+  }
+  .grid {
+    gap: var(--spacing-4);
+  }
+}
+
+/* ---- Auto-fit grid (for dynamic column sizing) ---- */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.grid-auto-sm {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.grid-auto-lg {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* ---- Flex Utilities ---- */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 { gap: var(--spacing-1); }
+.gap-2 { gap: var(--spacing-2); }
+.gap-3 { gap: var(--spacing-3); }
+.gap-4 { gap: var(--spacing-4); }
+.gap-6 { gap: var(--spacing-6); }
+.gap-8 { gap: var(--spacing-8); }
+.gap-10 { gap: var(--spacing-10); }
+.gap-12 { gap: var(--spacing-12); }
+
+/* ---- Spacing Helpers ---- */
+.mt-0 { margin-top: 0; }
+.mt-4 { margin-top: var(--spacing-4); }
+.mt-6 { margin-top: var(--spacing-6); }
+.mt-8 { margin-top: var(--spacing-8); }
+.mt-12 { margin-top: var(--spacing-12); }
+.mt-16 { margin-top: var(--spacing-16); }
+.mt-20 { margin-top: var(--spacing-20); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-6 { margin-bottom: var(--spacing-6); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+.mb-12 { margin-bottom: var(--spacing-12); }
+.mb-16 { margin-bottom: var(--spacing-16); }
+.mb-20 { margin-bottom: var(--spacing-20); }
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+/* ---- Visibility ---- */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
