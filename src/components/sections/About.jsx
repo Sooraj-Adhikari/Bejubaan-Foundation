@@ -117,11 +117,23 @@ export default function About() {
           padding: 6rem 0;
         }
 
+        @media (max-width: 768px) {
+          .about-section {
+            padding: 4rem 0;
+          }
+        }
+
         .about-grid {
           display: grid;
           grid-template-columns: 1fr;
           gap: 4rem;
           align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .about-grid {
+            gap: 2.5rem;
+          }
         }
 
         @media (min-width: 1024px) {
@@ -145,8 +157,16 @@ export default function About() {
           box-shadow: var(--shadow-md);
           text-align: left;
           position: relative;
+          width: 100%;
           max-width: 440px;
           border-bottom: 6px solid var(--color-secondary);
+        }
+
+        @media (max-width: 768px) {
+          .about-highlight-card {
+            padding: 2rem 1.5rem;
+            max-width: 100%;
+          }
         }
 
         .about-quote-icon {
@@ -158,7 +178,7 @@ export default function About() {
 
         .about-card-quote {
           font-family: var(--font-heading);
-          font-size: 1.45rem;
+          font-size: clamp(1.1rem, 3vw, 1.45rem);
           font-weight: 500;
           line-height: 1.5;
           margin-bottom: 2rem;

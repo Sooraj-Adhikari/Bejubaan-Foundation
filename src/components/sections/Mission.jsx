@@ -96,6 +96,7 @@ export default function Mission() {
 
         .section-header {
           max-width: 700px;
+          width: 100%;
           margin: 0 auto 3.5rem auto;
         }
 
@@ -208,7 +209,17 @@ export default function Mission() {
 
         @media (max-width: 768px) {
           .workflow-container {
-            padding: 3rem 1.5rem;
+            padding: 2.5rem 1.25rem;
+          }
+          .values-grid {
+            gap: 1.5rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .workflow-container {
+            padding: 2rem 1rem;
+            border-radius: var(--radius-md);
           }
         }
       `}</style>

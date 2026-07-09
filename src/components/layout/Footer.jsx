@@ -173,6 +173,16 @@ export default function Footer() {
           margin-bottom: 3.5rem;
         }
 
+        @media (max-width: 640px) {
+          .footer-container {
+            gap: 2rem;
+            margin-bottom: 2rem;
+          }
+          .main-footer {
+            padding: 3.5rem 0 0 0;
+          }
+        }
+
         @media (min-width: 640px) {
           .footer-container {
             grid-template-columns: 1fr 1fr;
@@ -306,6 +316,7 @@ export default function Footer() {
         .newsletter-form {
           display: flex;
           gap: 0.5rem;
+          flex-wrap: wrap;
         }
 
         .newsletter-form .form-control {
@@ -315,12 +326,29 @@ export default function Footer() {
           font-size: 0.85rem;
           padding: 0.5rem 0.75rem;
           height: 38px;
+          flex: 1;
+          min-width: 0;
         }
 
         .newsletter-form .btn {
           height: 38px;
           flex-shrink: 0;
           will-change: transform;
+        }
+
+        @media (max-width: 480px) {
+          .newsletter-form {
+            flex-direction: column;
+          }
+          .newsletter-form .form-control {
+            width: 100%;
+            height: auto;
+            padding: 0.6rem 0.75rem;
+          }
+          .newsletter-form .btn {
+            width: 100%;
+            height: auto;
+          }
         }
 
         /* Bottom copyright */

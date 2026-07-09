@@ -485,6 +485,12 @@ export default function Contact() {
           padding: 2.5rem;
         }
 
+        @media (max-width: 768px) {
+          .info-sidebar-card {
+            padding: 1.75rem 1.25rem;
+          }
+        }
+
         .info-sidebar-card h3 {
           font-size: 1.5rem;
           margin-bottom: 0.5rem;
@@ -580,12 +586,37 @@ export default function Contact() {
           padding: 2.5rem;
         }
 
+        @media (max-width: 768px) {
+          .form-card {
+            padding: 1.75rem 1.25rem;
+          }
+        }
+
+        .info-text a {
+          word-break: break-all;
+          overflow-wrap: anywhere;
+        }
+
         .form-card h3 {
           font-size: 1.5rem;
           margin-bottom: 1.5rem;
           color: var(--color-primary);
           border-bottom: 1px solid var(--color-border);
           padding-bottom: 0.75rem;
+        }
+
+        /* Two-column form rows */
+        .contact-form .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+
+        @media (max-width: 640px) {
+          .contact-form .form-row {
+            grid-template-columns: 1fr;
+            gap: 0;
+          }
         }
 
         /* Submit button disabled state */

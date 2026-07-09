@@ -140,6 +140,19 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
           min-height: calc(100vh - 80px);
         }
 
+        @media (max-width: 768px) {
+          .hero-section {
+            padding: 6rem 0 3.5rem 0;
+            min-height: auto;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 5.5rem 0 3rem 0;
+          }
+        }
+
         .hero-container {
           display: grid;
           grid-template-columns: 1fr;
@@ -180,13 +193,14 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
           gap: 1rem;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .hero-actions {
             flex-direction: column;
           }
           
           .hero-actions .btn {
             width: 100%;
+            justify-content: center;
           }
         }
 

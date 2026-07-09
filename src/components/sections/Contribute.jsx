@@ -429,16 +429,17 @@ export default function Contribute({ initialTab = 'food' }) {
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
-          padding: 0.85rem 1.5rem;
+          padding: 0.85rem 1rem;
           border: none;
           background: none;
           color: var(--color-text-muted);
           font-family: var(--font-heading);
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: clamp(0.8rem, 2vw, 0.95rem);
           border-radius: var(--radius-sm);
           cursor: pointer;
           transition: all var(--transition-fast);
+          white-space: nowrap;
         }
 
         .tab-btn:hover {
@@ -601,9 +602,17 @@ export default function Contribute({ initialTab = 'food' }) {
         .bank-row {
           display: flex;
           justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 0.25rem;
           border-bottom: 1px solid rgba(0,0,0,0.05);
           padding-bottom: 0.5rem;
           font-size: 0.95rem;
+        }
+
+        @media (max-width: 480px) {
+          .bank-row {
+            flex-direction: column;
+          }
         }
 
         .info-key {

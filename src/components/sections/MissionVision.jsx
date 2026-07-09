@@ -151,6 +151,13 @@ export default function MissionVision() {
           margin-bottom: 5rem;
         }
 
+        @media (max-width: 768px) {
+          .mv-grid {
+            gap: 1.75rem;
+            margin-bottom: 2.5rem;
+          }
+        }
+
         @media (min-width: 768px) {
           .mv-grid {
             grid-template-columns: 1fr 1fr;
@@ -163,6 +170,12 @@ export default function MissionVision() {
           padding: 3.5rem 2.5rem;
           border: 1px solid var(--color-border);
           border-radius: var(--radius-lg);
+        }
+
+        @media (max-width: 768px) {
+          .mv-card {
+            padding: 2rem 1.5rem;
+          }
         }
 
         .border-primary-top {
@@ -216,6 +229,18 @@ export default function MissionVision() {
           padding: 4rem 2.5rem;
           border: 1px solid var(--color-border);
           box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 768px) {
+          .core-values-wrapper {
+            padding: 2rem 1.25rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .core-values-wrapper {
+            padding: 2rem 1.5rem;
+          }
         }
 
         .values-header {

@@ -383,7 +383,21 @@ export default function Volunteer() {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          border-right: 1px solid var(--color-border);
+          border-right: none;
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        @media (min-width: 1024px) {
+          .volunteer-promo {
+            border-right: 1px solid var(--color-border);
+            border-bottom: none;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .volunteer-promo {
+            padding: 2rem 1.5rem;
+          }
         }
 
         .volunteer-promo h2 {
