@@ -9,19 +9,19 @@ export default function Testimonials() {
       quote: "Like many Indian homes, we felt guilty about throwing away the first roti or surplus cooked rice. Bejubaan Foundation solved this. Their volunteers collect it daily, and knowing it feeds a street cow brings peace to our hearts.",
       author: "Mrs. Rekha Sharma",
       role: "Household Food Donor, New Delhi",
-      icon: "👩"
+      img: "/reviewer_avatar_2.webp"
     },
     {
       quote: "I wanted to spend my morning hours doing something meaningful. Being a bridge between generous households and hungry street animals has made me more compassionate. The satisfaction is my daily reward.",
       author: "Karan Verma",
       role: "Student & Active Volunteer",
-      icon: "👨"
+      img: "/reviewer_avatar.jpg"
     },
     {
       quote: "We coordinated with the foundation during a wedding event. Instead of discarding surplus catering food, their team collected it and fed street animals responsibly. They make zero waste so simple.",
       author: "Amit Rastogi",
       role: "Event Organiser, Janakpuri",
-      icon: "👔"
+      img:"/reviewer_avatar_3.avif"
     }
   ];
 
@@ -89,7 +89,7 @@ export default function Testimonials() {
               
               <div className="testimonial-profile">
                 <img
-                  src="/reviewer_avatar.jpg"
+                  src={rev.img}
                   alt={rev.author}
                   className="testimonial-avatar"
                 />

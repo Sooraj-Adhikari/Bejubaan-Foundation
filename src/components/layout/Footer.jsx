@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 
 export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
@@ -43,10 +44,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { href: '#facebook', label: 'Facebook', emoji: '📘' },
-    { href: '#instagram', label: 'Instagram', emoji: '📸' },
-    { href: '#twitter', label: 'Twitter', emoji: '🐦' },
-    { href: '#youtube', label: 'YouTube', emoji: '🎥' }
+    { href: '#facebook',  label: 'Facebook',  Icon: FaFacebook,  brandColor: '#1877F2', id: 'facebook'  },
+    { href: '#instagram', label: 'Instagram', Icon: FaInstagram, brandColor: '#E4405F', id: 'instagram' },
+    { href: '#twitter',   label: 'X',         Icon: FaXTwitter,  brandColor: '#000000', id: 'x'         },
+    { href: '#youtube',   label: 'YouTube',   Icon: FaYoutube,   brandColor: '#FF0000', id: 'youtube'   },
   ];
 
   return (
@@ -78,12 +79,12 @@ export default function Footer() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="footer-social-icon"
-                whileHover={shouldReduceMotion ? {} : { scale: 1.15, y: -2 }}
+                className={`footer-social-icon footer-social-icon--${social.id}`}
+                whileHover={shouldReduceMotion ? {} : { scale: 1.08, y: -2 }}
                 whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
               >
-                {social.emoji}
+                <social.Icon size={18} aria-hidden="true" />
               </motion.a>
             ))}
           </div>
@@ -261,10 +262,23 @@ export default function Footer() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.1rem;
-          will-change: transform;
+          color: #555;
+          cursor: pointer;
           text-decoration: none;
+          will-change: transform;
+          transition: color 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
         }
+
+        .footer-social-icon:hover {
+          background-color: var(--color-white);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Per-brand hover colors */
+        .footer-social-icon--facebook:hover  { color: #1877F2; border-color: #1877F2; }
+        .footer-social-icon--instagram:hover { color: #E4405F; border-color: #E4405F; }
+        .footer-social-icon--x:hover         { color: #000000; border-color: #000000; }
+        .footer-social-icon--youtube:hover   { color: #FF0000; border-color: #FF0000; }
 
         .footer-links-list {
           list-style: none;

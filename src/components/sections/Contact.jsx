@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { submitFormToWeb3 } from '../../services/contactService';
@@ -152,20 +153,21 @@ export default function Contact() {
                 <h4>Follow Our Journey</h4>
                 <div className="social-icons">
                   {[
-                    { href: '#facebook', label: 'Facebook', emoji: '📘' },
-                    { href: '#instagram', label: 'Instagram', emoji: '📸' },
-                    { href: '#twitter', label: 'Twitter', emoji: '🐦' },
-                    { href: '#youtube', label: 'YouTube', emoji: '🎥' }
+                    { href: '#facebook',  label: 'Facebook',  Icon: FaFacebook,  id: 'facebook'  },
+                    { href: '#instagram', label: 'Instagram', Icon: FaInstagram, id: 'instagram' },
+                    { href: '#twitter',   label: 'X',         Icon: FaXTwitter,  id: 'x'         },
+                    { href: '#youtube',   label: 'YouTube',   Icon: FaYoutube,   id: 'youtube'   },
                   ].map((social) => (
                     <motion.a
                       key={social.label}
                       href={social.href}
                       aria-label={social.label}
-                      whileHover={shouldReduceMotion ? {} : { scale: 1.12, y: -2 }}
-                      whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+                      className={`social-icon--${social.id}`}
+                      whileHover={shouldReduceMotion ? {} : { scale: 1.08, y: -2 }}
+                      whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      {social.emoji}
+                      <social.Icon size={18} aria-hidden="true" />
                     </motion.a>
                   ))}
                 </div>
@@ -574,10 +576,22 @@ export default function Contact() {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.2rem;
-          /* transition handled by Framer Motion */
+          color: #555;
+          cursor: pointer;
+          text-decoration: none;
           will-change: transform;
+          transition: color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
+
+        .social-icons a:hover {
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Per-brand hover colors */
+        .social-icons a.social-icon--facebook:hover  { color: #1877F2; border-color: #1877F2; }
+        .social-icons a.social-icon--instagram:hover { color: #E4405F; border-color: #E4405F; }
+        .social-icons a.social-icon--x:hover         { color: #000000; border-color: #000000; }
+        .social-icons a.social-icon--youtube:hover   { color: #FF0000; border-color: #FF0000; }
 
         /* Form Card */
         .form-card {
