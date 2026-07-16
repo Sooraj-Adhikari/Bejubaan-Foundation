@@ -1,96 +1,97 @@
 /* ============================================
    Bejubaan Ann Seva Foundation – Design Tokens
+   Brand: Deep Forest Green + Warm Cream + Muted Gold
+   Logo: Trishul + Cow | Tagline: Jeev-daya hi Shiv-daya.
    ============================================ */
 
 :root {
-  /* ---- Color Palette ---- */
+  /* ---- Primary Palette – Deep Forest Green (matches logo exactly) ---- */
+  --color-primary-50:  #eaf2ef;
+  --color-primary-100: #c5ddd7;
+  --color-primary-200: #9dc7bc;
+  --color-primary-300: #74b0a0;
+  --color-primary-400: #53a08d;
+  --color-primary-500: #318f7a;
+  --color-primary-600: #287a68;
+  --color-primary-700: #234F45; /* Deep Forest Green — logo primary */
+  --color-primary-800: #1a3b34;
+  --color-primary-900: #102622;
 
-  /* Primary – Deep Blue from logo */
-  --color-primary-50: #e8edf2;
-  --color-primary-100: #c5d1de;
-  --color-primary-200: #9eb1c8;
-  --color-primary-300: #7690ae;
-  --color-primary-400: #58789a;
-  --color-primary-500: #3b6086;
-  --color-primary-600: #2f5275;
-  --color-primary-700: #1b3a5c; /* Deep Blue */
-  --color-primary-800: #162e4a;
-  --color-primary-900: #0e1f33;
+  /* ---- Secondary Palette – Warm Cream (background warmth) ---- */
+  --color-secondary-50:  #fdfaf5;
+  --color-secondary-100: #faf6ee;
+  --color-secondary-200: #f8f3eb; /* Page background */
+  --color-secondary-300: #f2e7d6; /* Alt background / section-alt */
+  --color-secondary-400: #e5d9c4;
+  --color-secondary-500: #d6c9af;
+  --color-secondary-600: #c5b694;
+  --color-secondary-700: #b4a27a;
+  --color-secondary-800: #9e8d64;
+  --color-secondary-900: #7a6c4c;
 
-  /* Secondary – Golden Yellow from logo */
-  --color-secondary-50: #fbf3e0;
-  --color-secondary-100: #f5e2b3;
-  --color-secondary-200: #eecf83;
-  --color-secondary-300: #e7bc53;
-  --color-secondary-400: #e2ad2f;
-  --color-secondary-500: #dd9f0b;
-  --color-secondary-600: #c89b3c; /* Golden Yellow */
-  --color-secondary-700: #b8880a;
-  --color-secondary-800: #a37608;
-  --color-secondary-900: #7e5906;
+  /* ---- Accent Palette – Muted Gold (warm supporting tone only) ---- */
+  --color-accent-50:  #fdf8ee;
+  --color-accent-100: #faefd6;
+  --color-accent-200: #f5e0b0;
+  --color-accent-300: #eecf83;
+  --color-accent-400: #d4aa62;
+  --color-accent-500: #c89b3c;
+  --color-accent-600: #B79252; /* Muted Gold — supporting accent */
+  --color-accent-700: #9D7A3E; /* Darker Muted Gold (hover) */
+  --color-accent-800: #7d5f2e;
+  --color-accent-900: #5e461f;
 
-  /* Accent – Leaf Green from logo */
-  --color-accent-50: #e8f5ec;
-  --color-accent-100: #c5e6d0;
-  --color-accent-200: #9ed5b1;
-  --color-accent-300: #74c490;
-  --color-accent-400: #55b777;
-  --color-accent-500: #36aa5e;
-  --color-accent-600: #2d8f4e;
-  --color-accent-700: #2d7a4a; /* Leaf Green */
-  --color-accent-800: #23603a;
-  --color-accent-900: #18472a;
+  /* ---- Neutral ---- */
+  --color-white:     #FFFFFF;
+  --color-black:     #0d0d0d;
+  --color-gray-50:   #f8fafb;
+  --color-gray-100:  #f0f5fa;
+  --color-gray-200:  #e2e8f0;
+  --color-gray-300:  #cbd5e1;
+  --color-gray-400:  #94a3b8;
+  --color-gray-500:  #64748b;
+  --color-gray-600:  #475569;
+  --color-gray-700:  #334155;
+  --color-gray-800:  #1e293b;
+  --color-gray-900:  #0f172a;
 
-  /* Neutral */
-  --color-white: #ffffff;
-  --color-black: #0d0d0d;
-  --color-gray-50: #f8fafb;
-  --color-gray-100: #f0f5fa;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-500: #64748b;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1e293b;
-  --color-gray-900: #0f172a;
-
-  /* Semantic Colors */
+  /* ---- Semantic ---- */
   --color-success: #16a34a;
   --color-warning: #d97706;
-  --color-error: #dc2626;
-  --color-info: #2563eb;
+  --color-error:   #dc2626;
+  --color-info:    #234F45; /* Use brand green instead of blue for info */
 
   /* ---- Background & Surface ---- */
-  --bg-primary: var(--color-white);
-  --bg-secondary: var(--color-gray-50);
-  --bg-tertiary: var(--color-gray-100);
+  --bg-primary:      var(--color-white);
+  --bg-secondary:    #f8f3eb; /* Warm cream page background */
+  --bg-tertiary:     #f2e7d6; /* Slightly deeper warm cream */
   --bg-primary-soft: var(--color-primary-50);
-  --bg-hero: var(--color-primary-700);
+  --bg-hero:         var(--color-primary-700);
 
   /* ---- Text ---- */
-  --text-primary: var(--color-gray-900);
-  --text-secondary: var(--color-gray-600);
-  --text-muted: var(--color-gray-400);
-  --text-inverse: var(--color-white);
+  --text-primary:        #1F3D35; /* Dark green — high readability on cream */
+  --text-secondary:      #4F6D66; /* Muted dark green */
+  --text-muted:          #7a9490;
+  --text-inverse:        var(--color-white);
   --text-primary-on-dark: var(--color-white);
-  --text-link: var(--color-primary-600);
-  --text-link-hover: var(--color-primary-700);
+  --text-link:           var(--color-primary-700);
+  --text-link-hover:     var(--color-primary-800);
 
   /* ---- Brand Aliases ---- */
-  --color-brand-primary: var(--color-primary-700);
-  --color-brand-secondary: var(--color-secondary-600);
-  --color-brand-accent: var(--color-accent-700);
+  --color-brand-primary:   var(--color-primary-700); /* #234F45 */
+  --color-brand-secondary: var(--color-accent-600);  /* #B79252 */
+  --color-brand-accent:    var(--color-accent-600);  /* #B79252 */
+  --color-brand-cream:     var(--color-secondary-300); /* #f2e7d6 */
 
   /* ---- Spacing Scale (4px base) ---- */
-  --spacing-0: 0;
-  --spacing-1: 0.25rem;   /* 4px */
-  --spacing-2: 0.5rem;    /* 8px */
-  --spacing-3: 0.75rem;   /* 12px */
-  --spacing-4: 1rem;      /* 16px */
-  --spacing-5: 1.25rem;   /* 20px */
-  --spacing-6: 1.5rem;    /* 24px */
-  --spacing-8: 2rem;      /* 32px */
+  --spacing-0:  0;
+  --spacing-1:  0.25rem;  /* 4px  */
+  --spacing-2:  0.5rem;   /* 8px  */
+  --spacing-3:  0.75rem;  /* 12px */
+  --spacing-4:  1rem;     /* 16px */
+  --spacing-5:  1.25rem;  /* 20px */
+  --spacing-6:  1.5rem;   /* 24px */
+  --spacing-8:  2rem;     /* 32px */
   --spacing-10: 2.5rem;   /* 40px */
   --spacing-12: 3rem;     /* 48px */
   --spacing-16: 4rem;     /* 64px */
@@ -99,60 +100,58 @@
   --spacing-32: 8rem;     /* 128px */
 
   /* ---- Section Spacing ---- */
-  --section-padding-y: var(--spacing-20);
-  --section-padding-y-sm: var(--spacing-12);
-  --container-max-width: 1200px;
+  --section-padding-y:    var(--spacing-24);
+  --section-padding-y-sm: var(--spacing-16);
+  --container-max-width:  1200px;
   --container-narrow-max-width: 800px;
-  --container-padding-x: var(--spacing-6);
+  --container-padding-x:  var(--spacing-6);
 
   /* ---- Border Radius ---- */
   --radius-none: 0;
-  --radius-sm: 0.25rem;   /* 4px */
-  --radius-md: 0.5rem;    /* 8px */
-  --radius-lg: 0.75rem;   /* 12px */
-  --radius-xl: 1rem;      /* 16px */
-  --radius-2xl: 1.5rem;   /* 24px */
+  --radius-sm:   0.5rem;  /* 8px  */
+  --radius-md:   0.75rem; /* 12px */
+  --radius-lg:   1rem;    /* 16px */
+  --radius-xl:   1.25rem; /* 20px */
+  --radius-2xl:  1.5rem;  /* 24px */
   --radius-full: 9999px;
 
-  /* ---- Shadows ---- */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08), 0 8px 10px rgba(0, 0, 0, 0.03);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.1);
-  --shadow-primary: 0 4px 14px rgba(27, 58, 92, 0.15);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  /* ---- Shadows (green-tinted for brand coherence) ---- */
+  --shadow-xs:           0 1px 2px rgba(35, 79, 69, 0.03);
+  --shadow-sm:           0 2px 12px rgba(35, 79, 69, 0.04), 0 1px 4px rgba(35, 79, 69, 0.02);
+  --shadow-md:           0 8px 32px rgba(35, 79, 69, 0.05), 0 2px 10px rgba(35, 79, 69, 0.03);
+  --shadow-lg:           0 16px 48px rgba(35, 79, 69, 0.06), 0 4px 20px rgba(35, 79, 69, 0.03);
+  --shadow-xl:           0 24px 60px rgba(35, 79, 69, 0.07), 0 6px 24px rgba(35, 79, 69, 0.04);
+  --shadow-2xl:          0 32px 80px rgba(35, 79, 69, 0.09);
+  --shadow-primary:      0 8px 30px rgba(35, 79, 69, 0.07);
+  --shadow-card:         0 8px 32px rgba(35, 79, 69, 0.05), 0 2px 10px rgba(35, 79, 69, 0.03);
+  --shadow-card-hover:   0 24px 60px rgba(35, 79, 69, 0.07), 0 6px 24px rgba(35, 79, 69, 0.04);
 
   /* ---- Z-Index Scale ---- */
-  --z-base: 1;
+  --z-base:     1;
   --z-dropdown: 100;
-  --z-sticky: 200;
-  --z-overlay: 300;
-  --z-modal: 400;
-  --z-toast: 500;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
 
   /* ---- Transitions ---- */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   350ms ease;
   --transition-bounce: 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* ---- Focus Ring ---- */
-  --focus-ring-color: var(--color-primary-400);
-  --focus-ring-width: 3px;
+  /* ---- Focus Ring (green brand) ---- */
+  --focus-ring-color:  var(--color-primary-600);
+  --focus-ring-width:  1.5px;
   --focus-ring-offset: 2px;
 
   /* ---- Container Widths ---- */
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
-  --container-xl: 1200px;
+  --container-sm:  640px;
+  --container-md:  768px;
+  --container-lg:  1024px;
+  --container-xl:  1200px;
 
   /* ---- Header Height ---- */
   --header-height: 4rem;
 }
-
-/* ---- Dark Mode Overrides ---- */
-/* Skipping dark mode – NGO site uses light theme per spec */
+/* Light theme only — dark mode intentionally omitted per NGO brand spec */

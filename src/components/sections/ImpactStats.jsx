@@ -192,12 +192,16 @@ export default function ImpactStats() {
           align-items: center;
           padding: 2.5rem 1.5rem;
           border: 1px solid var(--color-border);
-          background-color: var(--color-white);
-          transition: border-color var(--transition-normal);
+          background-color: #ffffff;
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
         }
 
         .stat-card:hover {
-          border-color: rgba(10, 77, 140, 0.15);
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         .stat-icon-wrapper {
@@ -242,11 +246,11 @@ export default function ImpactStats() {
         }
 
         .text-primary { color: var(--color-primary); }
-        .text-secondary { color: #B28200; }
+        .text-secondary { color: var(--color-accent-hover); }
         .text-accent { color: var(--color-accent); }
 
         .impact-vision-banner {
-          background-color: var(--color-primary-light); /* Soft light blue background */
+          background-color: var(--color-primary-light);
           color: var(--color-primary);
           border-radius: var(--radius-lg);
           padding: 3rem 2.5rem;
@@ -261,7 +265,7 @@ export default function ImpactStats() {
           font-style: italic;
           font-size: 1.6rem;
           margin-bottom: 1rem;
-          font-weight: 650;
+          font-weight: 700;
         }
 
         .banner-content p {

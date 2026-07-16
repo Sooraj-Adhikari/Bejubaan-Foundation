@@ -5,22 +5,29 @@
 
 :root {
   /* Brand Color Palette */
-  --color-primary: #0A4D8C;         /* Deep Blue */
-  --color-primary-hover: #073866;   /* Darker Deep Blue */
-  --color-primary-light: #EBF3FC;   /* Very light blue for soft backgrounds */
-  --color-secondary: #F4B400;       /* Golden Yellow */
-  --color-secondary-hover: #DDA300; /* Darker Golden Yellow */
-  --color-accent: #4CAF50;          /* Leaf Green */
-  --color-accent-hover: #3E8E41;    /* Darker Leaf Green */
-  --color-accent-light: #EEF7EE;    /* Very light green */
+  --color-primary: #234F45;         /* Deep Forest Green */
+  --color-primary-hover: #16322C;   /* Darker Deep Forest Green */
+  --color-primary-light: #E8EFEA;   /* Soft Forest Green tint */
+  --color-secondary: #F2E7D6;       /* Warm Cream */
+  --color-secondary-hover: #E5D9C4; /* Darker Warm Cream */
+  --color-accent: #B79252;          /* Muted Gold */
+  --color-accent-hover: #9D7A3E;    /* Darker Muted Gold */
+  --color-accent-light: #FAF6EE;    /* Soft Muted Gold tint */
+
+  /* Icon Color System */
+  --color-icon-default: #234F45;   /* Forest Green */
+  --color-icon-hover: #B79252;     /* Muted Gold */
+  --color-icon-success: #2E7D32;   /* Natural Green */
+  --color-icon-warning: #D97706;   /* Warm Amber */
+  --color-icon-error: #C0392B;     /* Muted Red */
   
   /* Neutral Color Palette */
   --color-white: #FFFFFF;
-  --color-bg: #FFFFFF;
-  --color-bg-alt: #F8FAFC;          /* Premium Light Section Gray */
-  --color-text: #1F2937;            /* Off-Black Slate for readability */
-  --color-text-muted: #4B5563;      /* Muted Slate Gray */
-  --color-border: #E2E8F0;          /* Soft border */
+  --color-bg: #F8F3EB;              /* Background: #F8F3EB */
+  --color-bg-alt: #F2E7D6;          /* Secondary Warm Cream */
+  --color-text: #1F3D35;            /* Dark Green (#1F3D35) */
+  --color-text-muted: #4F6D66;      /* Muted Dark Green */
+  --color-border: #E5DCCE;          /* Soft Cream/Beige border */
   --color-error: #DC2626;           /* Production-ready validation red */
   --color-error-bg: #FEF2F2;        /* Soft red for alert boxes */
 
@@ -28,15 +35,15 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Poppins', var(--font-sans);
   
-  /* Elevational Shadows */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px -2px rgba(10, 77, 140, 0.06), 0 2px 6px -1px rgba(10, 77, 140, 0.03);
-  --shadow-lg: 0 12px 24px -4px rgba(10, 77, 140, 0.08), 0 4px 12px -2px rgba(10, 77, 140, 0.04);
-  --shadow-hover: 0 20px 32px -6px rgba(10, 77, 140, 0.12), 0 8px 16px -4px rgba(10, 77, 140, 0.06);
+  /* Elevational Shadows - Premium Soft Tinted Shadows */
+  --shadow-sm: 0 2px 12px rgba(35, 79, 69, 0.03), 0 1px 4px rgba(35, 79, 69, 0.01);
+  --shadow-md: 0 8px 32px rgba(35, 79, 69, 0.04), 0 2px 10px rgba(35, 79, 69, 0.02);
+  --shadow-lg: 0 16px 48px rgba(35, 79, 69, 0.05), 0 4px 20px rgba(35, 79, 69, 0.02);
+  --shadow-hover: 0 24px 60px rgba(35, 79, 69, 0.06), 0 6px 24px rgba(35, 79, 69, 0.03);
 
   /* Border Radii */
-  --radius-sm: 6px;
-  --radius-md: 10px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-lg: 16px;
   --radius-full: 9999px;
 
@@ -67,6 +74,7 @@ html {
 body {
   line-height: 1.7;
   font-size: 1rem;
+  font-weight: 400;
 }
 
 /* Accessible Keyboard Focus Indicators */
@@ -75,7 +83,7 @@ button:focus-visible,
 input:focus-visible, 
 select:focus-visible, 
 textarea:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 1.5px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -83,7 +91,7 @@ textarea:focus-visible {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.25;
 }
 
@@ -96,21 +104,21 @@ h1 {
 
 h2 {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
 }
 
 h3 {
   font-size: clamp(1.25rem, 3vw, 1.5rem);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.015em;
   margin-bottom: 0.75rem;
 }
 
 h4 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 p {
@@ -186,39 +194,52 @@ a:hover {
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: var(--radius-md);
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 200ms ease;
   gap: 0.5rem;
   line-height: 1.25;
   text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-white);
 }
 
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
+  border-color: var(--color-primary);
 }
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
 }
 
 .btn-secondary {
   background-color: var(--color-secondary);
-  color: var(--color-primary); /* Contrast deep blue on golden yellow */
+  color: var(--color-primary);
+  border-color: var(--color-secondary);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
 }
 
 .btn-accent {
   background-color: var(--color-accent);
   color: var(--color-white);
+  border-color: var(--color-accent);
 }
 
 .btn-accent:hover {
   background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .btn-outline {
@@ -229,28 +250,34 @@ a:hover {
 
 .btn-outline:hover {
   background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
 }
 
 .btn-sm {
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
 }
 
 .btn-lg {
   padding: 0.875rem 2rem;
   font-size: 1.05rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
-/* Premium Card System */
 .card {
-  background-color: var(--color-white);
+  background-color: #ffffff;
   border-radius: var(--radius-lg);
   padding: 2.5rem;
-  box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
-  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(35, 79, 69, 0.15);
 }
 
 /* Badges */
@@ -272,8 +299,8 @@ a:hover {
 }
 
 .badge-secondary {
-  background-color: rgba(244, 180, 0, 0.15);
-  color: #B28200;
+  background-color: rgba(183, 146, 82, 0.15);
+  color: var(--color-accent-hover);
 }
 
 .badge-accent {
@@ -308,10 +335,15 @@ a:hover {
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
+.form-control::placeholder {
+  color: #94a3b8; /* Soft gray placeholder */
+  opacity: 1;
+}
+
 .form-control:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(10, 77, 140, 0.12);
+  box-shadow: 0 0 0 3px rgba(35, 79, 69, 0.06);
 }
 
 /* Validation Invalid States */
@@ -386,8 +418,7 @@ textarea.form-control {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(10, 77, 140, 0.35);
-  backdrop-filter: blur(8px);
+  background-color: rgba(35, 79, 69, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -463,7 +494,7 @@ textarea.form-control {
 .btn-spinner {
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   border-top-color: #fff;
   border-radius: 50%;
   animation: btn-spin 0.6s linear infinite;
@@ -533,3 +564,153 @@ textarea.form-control {
   white-space: nowrap;
   border: 0;
 }
+
+/* ==========================================================================
+   Icon Styling System
+   ========================================================================== */
+
+/* 1. Default State for Icons */
+svg.lucide,
+svg[stroke="currentColor"],
+.react-icons,
+.social-icons a svg,
+.step-icon-wrapper svg {
+  color: var(--color-icon-default) !important;
+}
+
+/* Exceptions: Icons on dark background (like footer) need high contrast */
+.main-footer svg.lucide,
+.main-footer svg,
+.footer-social-icon svg {
+  color: var(--color-secondary) !important; /* Keep secondary cream */
+}
+
+/* Exception: Heart icon in footer bottom should remain accent (Muted Gold) */
+.text-accent-heart {
+  color: var(--color-icon-hover) !important;
+}
+
+/* 2. Hover State for Icons */
+svg.lucide:hover,
+a:hover svg.lucide,
+button:hover svg.lucide,
+.footer-social-icon:hover svg,
+.social-icons a:hover svg,
+.tab-btn:hover svg,
+.about-highlight-card:hover svg,
+.card:hover svg.lucide,
+.card:hover svg,
+.step-card:hover svg,
+.step-card:hover .step-icon-wrapper svg,
+.value-mini-card:hover svg,
+.pillar-item:hover svg,
+.pillar-icon-box:hover svg,
+.mv-card:hover svg,
+svg:hover {
+  color: var(--color-icon-hover) !important;
+}
+
+/* 3. Success State Icons */
+svg.lucide-check-circle,
+svg.success-icon,
+.success-state svg,
+.success-icon {
+  color: var(--color-icon-success) !important;
+}
+
+/* 4. Warning State Icons */
+svg.lucide-shield-alert,
+svg.warning-icon,
+.warning-icon {
+  color: var(--color-icon-warning) !important;
+}
+
+/* 5. Error State Icons */
+svg.lucide-alert-circle,
+svg.error-icon,
+.error-message svg,
+.error-icon {
+  color: var(--color-icon-error) !important;
+}
+
+/* Social Icons Default and Hover System Override */
+.social-icons a {
+  color: var(--color-icon-default) !important;
+  border-color: var(--color-border) !important;
+}
+
+.social-icons a:hover {
+  color: var(--color-icon-hover) !important;
+  border-color: var(--color-icon-hover) !important;
+}
+
+/* Disable brand-specific hovers to keep icon system consistent */
+.social-icons a.social-icon--facebook:hover,
+.social-icons a.social-icon--instagram:hover,
+.social-icons a.social-icon--x:hover,
+.social-icons a.social-icon--youtube:hover {
+  color: var(--color-icon-hover) !important;
+  border-color: var(--color-icon-hover) !important;
+}
+
+.footer-social-icon {
+  color: var(--color-secondary) !important;
+  border-color: rgba(242, 231, 214, 0.15) !important;
+}
+
+.footer-social-icon:hover {
+  color: var(--color-icon-hover) !important;
+  border-color: var(--color-icon-hover) !important;
+}
+
+/* ==========================================================================
+   Global Card & Layout Shadow/Border Unification Override
+   ========================================================================== */
+.card,
+.form-card,
+.info-sidebar-card,
+.tab-content-card,
+.gallery-card,
+.step-card,
+.how-step-card,
+.stat-card,
+.mv-card,
+.testimonial-card,
+.about-highlight-card,
+.hero-floating-card,
+.lightbox-content,
+.bank-details-card,
+.volunteer-card-wrapper {
+  box-shadow: var(--shadow-md) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+.card:hover,
+.form-card:hover,
+.info-sidebar-card:hover,
+.tab-content-card:hover,
+.gallery-card:hover,
+.step-card:hover,
+.how-step-card:hover,
+.stat-card:hover,
+.mv-card:hover,
+.testimonial-card:hover,
+.about-highlight-card:hover,
+.hero-floating-card:hover,
+.bank-details-card:hover {
+  box-shadow: var(--shadow-hover) !important;
+  border-color: rgba(35, 79, 69, 0.15) !important;
+}
+
+/* Intermediate elements with medium border-radius */
+.value-mini-card,
+.step-icon-wrapper,
+.val-icon-box,
+.pillar-icon-box,
+.floating-card-icon,
+.stat-icon-wrapper {
+  border-radius: var(--radius-md) !important;
+}
+
+

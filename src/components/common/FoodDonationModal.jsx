@@ -247,13 +247,12 @@ export default function FoodDonationModal({ isOpen, onClose }) {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: rgba(10, 77, 140, 0.4);
+          background-color: rgba(35, 79, 69, 0.55);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 2000;
           padding: 1rem;
-          backdrop-filter: blur(2px);
         }
 
         .modal-container {

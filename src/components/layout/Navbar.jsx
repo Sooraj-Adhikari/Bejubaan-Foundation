@@ -6,6 +6,7 @@ export default function Navbar({ onDonateClick }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [activeSection, setActiveSection] = useState('#home');
   
   const shouldReduceMotion = useReducedMotion();
 
@@ -16,8 +17,28 @@ export default function Navbar({ onDonateClick }) {
       } else {
         setScrolled(false);
       }
+
+      // Scroll Spy logic to detect active section dynamically
+      const sections = ['#home', '#about', '#founder-story', '#how-it-works', '#volunteer-signup', '#contact'];
+      const scrollPosition = window.scrollY + 200; // offset for detection point
+
+      for (const section of sections) {
+        try {
+          const el = document.querySelector(section);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              setActiveSection(section);
+            }
+          }
+        } catch (e) {
+          // ignore selector errors if element is temporarily missing
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -33,6 +54,7 @@ export default function Navbar({ onDonateClick }) {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsOpen(false);
+    setActiveSection(href);
     const targetElement = document.querySelector(href);
     if (targetElement) {
       const navHeight = scrolled ? 70 : 80;
@@ -53,6 +75,7 @@ export default function Navbar({ onDonateClick }) {
           <div className="brand-info">
             <span className="brand-title">Bejubaan</span>
             <span className="brand-subtitle">Ann Seva Foundation</span>
+            <span className="brand-tagline">Jeev-daya hi Shiv-daya.</span>
           </div>
         </a>
 
@@ -63,7 +86,7 @@ export default function Navbar({ onDonateClick }) {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="nav-link"
+              className={`nav-link ${activeSection === link.href ? 'active' : ''}`}
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
               style={{ position: 'relative' }}
@@ -114,7 +137,7 @@ export default function Navbar({ onDonateClick }) {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="mobile-link"
+                    className={`mobile-link ${activeSection === link.href ? 'active' : ''}`}
                   >
                     {link.name}
                   </a>
@@ -132,7 +155,7 @@ export default function Navbar({ onDonateClick }) {
           left: 0;
           right: 0;
           height: 80px;
-          background-color: var(--color-white);
+          background-color: var(--color-secondary);
           border-bottom: 1px solid var(--color-border);
           z-index: 1000;
           transition: height var(--transition-normal), box-shadow var(--transition-normal);
@@ -192,6 +215,16 @@ export default function Navbar({ onDonateClick }) {
           text-transform: uppercase;
         }
 
+        .brand-tagline {
+          font-size: 0.7rem;
+          color: var(--color-accent);
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          font-style: italic;
+          margin-top: 1px;
+          line-height: 1.2;
+        }
+
         .desktop-nav {
           display: none;
           align-items: center;
@@ -208,13 +241,22 @@ export default function Navbar({ onDonateClick }) {
           font-family: var(--font-sans);
           font-weight: 500;
           font-size: 0.95rem;
-          color: var(--color-text-muted);
+          color: var(--color-text);
           padding: 0.5rem 0;
           transition: color var(--transition-fast);
         }
 
         .nav-link:hover {
+          color: var(--color-accent);
+        }
+
+        .nav-link.active {
           color: var(--color-primary);
+          font-weight: 600;
+        }
+
+        .nav-underline {
+          background-color: var(--color-accent) !important;
         }
 
         .mobile-toggle {
@@ -240,7 +282,7 @@ export default function Navbar({ onDonateClick }) {
           width: 100%;
           max-width: 320px;
           height: 100vh;
-          background-color: var(--color-white);
+          background-color: var(--color-secondary);
           box-shadow: var(--shadow-lg);
           padding: 90px 2rem 2rem;
           z-index: 1005;
@@ -264,8 +306,12 @@ export default function Navbar({ onDonateClick }) {
         }
 
         .mobile-link:hover {
-          color: var(--color-primary);
+          color: var(--color-accent);
           padding-left: 0.25rem;
+        }
+
+        .mobile-link.active {
+          color: var(--color-primary);
         }
       `}</style>
     </header>

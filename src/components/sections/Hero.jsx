@@ -132,8 +132,9 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
       <style>{`
         .hero-section {
           position: relative;
-          background-color: var(--color-bg-alt);
-          padding: 8rem 0 5rem 0;
+          background: radial-gradient(circle at 80% 20%, rgba(183, 146, 82, 0.07) 0%, rgba(35, 79, 69, 0.02) 50%, var(--color-bg) 100%);
+          background-color: var(--color-bg);
+          padding: 9.5rem 0 6.5rem 0;
           overflow: hidden;
           display: flex;
           align-items: center;
@@ -142,14 +143,14 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
 
         @media (max-width: 768px) {
           .hero-section {
-            padding: 6rem 0 3.5rem 0;
+            padding: 7rem 0 4.5rem 0;
             min-height: auto;
           }
         }
 
         @media (max-width: 480px) {
           .hero-section {
-            padding: 5.5rem 0 3rem 0;
+            padding: 6.5rem 0 3.5rem 0;
           }
         }
 
@@ -163,7 +164,7 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
         @media (min-width: 1024px) {
           .hero-container {
             grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
+            gap: 4.5rem;
           }
         }
 
@@ -171,31 +172,50 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
           text-align: left;
         }
 
+        .hero-section .badge {
+          background-color: rgba(183, 146, 82, 0.12);
+          color: var(--color-accent-hover);
+          border: 1px solid rgba(183, 146, 82, 0.25);
+          padding: 0.4rem 0.85rem;
+          font-size: 0.825rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          border-radius: var(--radius-full);
+          display: inline-flex;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+
         .hero-title {
           font-family: var(--font-heading);
-          color: var(--color-primary);
+          color: var(--color-text); /* Deep Green heading */
           margin-bottom: 1.5rem;
-          line-height: 1.15;
+          line-height: 1.18;
+          font-weight: 700;
         }
 
         .text-secondary-color {
-          color: #B28200; /* Contrast version of Golden Yellow for heading readability */
+          color: var(--color-accent); /* Muted Gold accent */
         }
 
         .hero-description {
-          margin-bottom: 2rem;
+          margin-bottom: 2.25rem;
           color: var(--color-text-muted);
+          font-size: 1.05rem;
+          line-height: 1.7;
         }
 
         .hero-actions {
           display: flex;
           flex-wrap: wrap;
-          gap: 1rem;
+          gap: 1.25rem;
         }
 
         @media (max-width: 768px) {
           .hero-actions {
             flex-direction: column;
+            gap: 1rem;
           }
           
           .hero-actions .btn {
@@ -223,22 +243,29 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
           border-radius: var(--radius-lg);
           box-shadow: var(--shadow-lg);
           object-fit: cover;
-          border: 6px solid var(--color-white);
+          border: 1px solid var(--color-border);
         }
 
         .hero-floating-card {
           position: absolute;
-          bottom: 24px;
+          bottom: 28px;
           left: -20px;
           background-color: var(--color-white);
           padding: 1rem 1.5rem;
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-lg);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
           display: flex;
           align-items: center;
           gap: 1rem;
           border: 1px solid var(--color-border);
           max-width: 280px;
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .hero-floating-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         @media (max-width: 640px) {
@@ -260,7 +287,7 @@ export default function Hero({ onDonateClick, onVolunteerClick }) {
         }
 
         .floating-card-text strong {
-          color: var(--color-primary);
+          color: var(--color-text);
           font-size: 0.95rem;
         }
 

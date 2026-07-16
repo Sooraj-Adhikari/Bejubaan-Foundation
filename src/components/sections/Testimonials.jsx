@@ -126,24 +126,27 @@ export default function Testimonials() {
 
         .testimonial-card {
           text-align: left;
-          background-color: var(--color-bg-alt);
+          background-color: #ffffff;
           border: 1px solid var(--color-border);
           border-radius: var(--radius-lg);
           padding: 2.5rem;
           display: flex;
           flex-direction: column;
           position: relative;
-          transition: border-color var(--transition-normal);
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
         }
 
         .testimonial-card:hover {
-          border-color: rgba(10, 77, 140, 0.15);
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         .testimonial-quote-mark {
           font-family: Georgia, serif;
           font-size: 4rem;
-          color: rgba(10, 77, 140, 0.08);
+          color: rgba(35, 79, 69, 0.08);
           position: absolute;
           top: 10px;
           left: 20px;

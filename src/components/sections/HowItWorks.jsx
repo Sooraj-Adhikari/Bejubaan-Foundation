@@ -118,7 +118,7 @@ export default function HowItWorks() {
 
       <style>{`
         .how-section {
-          background-color: var(--color-white);
+          background-color: var(--color-bg-alt);
           padding: 6rem 0;
         }
 
@@ -139,20 +139,22 @@ export default function HowItWorks() {
 
         .how-step-card {
           position: relative;
-          background-color: var(--color-white);
+          background-color: #ffffff;
           border: 1px solid var(--color-border);
           padding: 2.5rem 1.75rem;
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-sm);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
           text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
-          transition: border-color var(--transition-normal);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
         }
 
         .how-step-card:hover {
-          border-color: rgba(10, 77, 140, 0.15);
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         .how-step-num-bg {
@@ -162,7 +164,7 @@ export default function HowItWorks() {
           font-family: var(--font-heading);
           font-size: 2.5rem;
           font-weight: 800;
-          color: rgba(10, 77, 140, 0.05);
+          color: rgba(35, 79, 69, 0.05);
           line-height: 1;
           user-select: none;
         }
@@ -171,7 +173,7 @@ export default function HowItWorks() {
           width: 54px;
           height: 54px;
           border-radius: var(--radius-full);
-          background-color: rgba(10, 77, 140, 0.08);
+          background-color: rgba(35, 79, 69, 0.08);
           color: var(--color-primary);
           display: flex;
           align-items: center;
@@ -184,7 +186,7 @@ export default function HowItWorks() {
           margin-bottom: 0.75rem;
           color: var(--color-primary);
           font-family: var(--font-heading);
-          font-weight: 650;
+          font-weight: 700;
         }
 
         .how-step-card p {

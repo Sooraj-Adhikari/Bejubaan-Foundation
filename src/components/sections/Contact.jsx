@@ -482,9 +482,18 @@ export default function Contact() {
 
         .info-sidebar-card {
           text-align: left;
-          background-color: var(--color-bg-alt);
+          background-color: #ffffff;
           border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
           padding: 2.5rem;
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .info-sidebar-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         @media (max-width: 768px) {
@@ -584,7 +593,7 @@ export default function Contact() {
         }
 
         .social-icons a:hover {
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+          box-shadow: var(--shadow-sm);
         }
 
         /* Per-brand hover colors */
@@ -595,9 +604,18 @@ export default function Contact() {
 
         /* Form Card */
         .form-card {
-          background-color: var(--color-white);
+          background-color: #ffffff;
           border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
           padding: 2.5rem;
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .form-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         @media (max-width: 768px) {

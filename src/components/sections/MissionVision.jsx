@@ -140,7 +140,7 @@ export default function MissionVision() {
 
       <style>{`
         .mv-section {
-          background-color: var(--color-bg-alt);
+          background-color: var(--color-white);
           padding: 6rem 0;
         }
 
@@ -166,10 +166,18 @@ export default function MissionVision() {
 
         .mv-card {
           text-align: left;
-          background-color: var(--color-white);
+          background-color: #ffffff;
           padding: 3.5rem 2.5rem;
           border: 1px solid var(--color-border);
           border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .mv-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         @media (max-width: 768px) {
@@ -179,11 +187,11 @@ export default function MissionVision() {
         }
 
         .border-primary-top {
-          border-top: 4px solid var(--color-primary);
+          border-top: 2px solid var(--color-primary);
         }
 
         .border-accent-top {
-          border-top: 4px solid var(--color-accent);
+          border-top: 2px solid var(--color-accent);
         }
 
         .mv-icon-box {
@@ -196,8 +204,8 @@ export default function MissionVision() {
           margin-bottom: 1.75rem;
         }
 
-        .bg-primary-light { background-color: rgba(10, 77, 140, 0.08); }
-        .bg-accent-light { background-color: rgba(76, 175, 80, 0.08); }
+        .bg-primary-light { background-color: rgba(35, 79, 69, 0.08); }
+        .bg-accent-light { background-color: rgba(183, 146, 82, 0.08); }
 
         .text-primary { color: var(--color-primary); }
         .text-accent { color: var(--color-accent); }
@@ -284,7 +292,7 @@ export default function MissionVision() {
           margin-bottom: 0;
           color: var(--color-primary);
           font-family: var(--font-heading);
-          font-weight: 650;
+          font-weight: 700;
         }
 
         .value-mini-card p {

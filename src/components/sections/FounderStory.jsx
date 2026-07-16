@@ -344,7 +344,7 @@ export default function FounderStory() {
         .quote-mark {
           font-family: Georgia, serif;
           font-size: 3rem;
-          color: rgba(10, 77, 140, 0.15);
+          color: rgba(35, 79, 69, 0.15);
           position: absolute;
           top: -20px;
           left: 5px;
@@ -371,7 +371,7 @@ export default function FounderStory() {
           font-size: 1.75rem;
           width: 44px;
           height: 44px;
-          background-color: rgba(244, 180, 0, 0.15);
+          background-color: rgba(183, 146, 82, 0.15);
           border-radius: var(--radius-full);
           display: flex;
           align-items: center;
@@ -411,7 +411,7 @@ export default function FounderStory() {
         }
 
         .callout-box {
-          background-color: #FFFDF5; /* Warm background */
+          background-color: var(--color-bg); /* Warm background */
           border-left: 4px solid var(--color-secondary);
           padding: 1.5rem 1.75rem;
           border-radius: 0 var(--radius-md) var(--radius-md) 0;
@@ -438,8 +438,8 @@ export default function FounderStory() {
         }
 
         .story-pillars {
-          background-color: rgba(76, 175, 80, 0.05);
-          border: 1px dashed rgba(76, 175, 80, 0.3);
+          background-color: rgba(183, 146, 82, 0.05);
+          border: 1px dashed rgba(183, 146, 82, 0.3);
           border-radius: var(--radius-md);
           padding: 1.5rem 1.75rem;
           margin: 1rem 0;

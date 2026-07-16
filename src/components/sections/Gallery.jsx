@@ -211,16 +211,18 @@ export default function Gallery() {
         .gallery-card {
           position: relative;
           border-radius: var(--radius-lg);
-          background-color: var(--color-white);
+          background-color: #ffffff;
           overflow: hidden;
           box-shadow: var(--shadow-md);
           border: 1px solid var(--color-border);
-          transition: border-color var(--transition-normal);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
           will-change: transform;
         }
 
         .gallery-card:hover {
-          border-color: rgba(10, 77, 140, 0.15);
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         .gallery-img-box {
@@ -228,7 +230,7 @@ export default function Gallery() {
           padding-top: 66.66%; /* 3:2 Aspect Ratio */
           position: relative;
           overflow: hidden;
-          background-color: #E2E8F0;
+          background-color: var(--color-border);
         }
 
         .gallery-img {
@@ -247,8 +249,8 @@ export default function Gallery() {
           inset: 0;
           background: linear-gradient(
             to bottom,
-            rgba(10, 77, 140, 0.12) 0%,
-            rgba(10, 77, 140, 0.35) 100%
+            rgba(35, 79, 69, 0.12) 0%,
+            rgba(35, 79, 69, 0.35) 100%
           );
           display: flex;
           align-items: center;
@@ -278,7 +280,7 @@ export default function Gallery() {
           font-size: 1.1rem;
           color: var(--color-primary);
           font-family: var(--font-heading);
-          font-weight: 650;
+          font-weight: 700;
           margin-bottom: 0.35rem;
         }
 

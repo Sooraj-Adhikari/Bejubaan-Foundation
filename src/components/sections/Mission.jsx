@@ -134,7 +134,7 @@ export default function Mission() {
         }
 
         .text-primary { color: var(--color-primary); }
-        .text-secondary { color: #B28200; }
+        .text-secondary { color: var(--color-accent-hover); }
         .text-accent { color: var(--color-accent); }
 
         /* Workflow styles */
@@ -179,7 +179,7 @@ export default function Mission() {
           font-size: 5.5rem;
           font-weight: 800;
           font-family: var(--font-heading);
-          color: rgba(10, 77, 140, 0.04);
+          color: rgba(35, 79, 69, 0.04);
           line-height: 1;
           pointer-events: none;
           user-select: none;
@@ -189,7 +189,7 @@ export default function Mission() {
           width: 52px;
           height: 52px;
           border-radius: var(--radius-full);
-          background-color: rgba(10, 77, 140, 0.08);
+          background-color: rgba(35, 79, 69, 0.08);
           color: var(--color-primary);
           display: flex;
           align-items: center;

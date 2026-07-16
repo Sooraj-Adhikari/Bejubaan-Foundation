@@ -410,7 +410,7 @@ export default function Contribute({ initialTab = 'food' }) {
           justify-content: center;
           gap: 0.5rem;
           margin-bottom: 1.5rem;
-          background-color: rgba(10, 77, 140, 0.05);
+          background-color: rgba(35, 79, 69, 0.05);
           padding: 0.5rem;
           border-radius: var(--radius-md);
           border: 1px solid var(--color-border);
@@ -444,7 +444,7 @@ export default function Contribute({ initialTab = 'food' }) {
 
         .tab-btn:hover {
           color: var(--color-primary);
-          background-color: rgba(10, 77, 140, 0.03);
+          background-color: rgba(35, 79, 69, 0.03);
         }
 
         .tab-btn.active {
@@ -455,11 +455,18 @@ export default function Contribute({ initialTab = 'food' }) {
 
         .tab-content-card {
           text-align: left;
-          background-color: var(--color-white);
+          background-color: #ffffff;
           padding: 3rem;
-          box-shadow: var(--shadow-lg);
+          box-shadow: var(--shadow-md);
           border: 1px solid var(--color-border);
           border-radius: var(--radius-lg);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .tab-content-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         @media (max-width: 640px) {
@@ -553,7 +560,7 @@ export default function Contribute({ initialTab = 'food' }) {
           width: 80px;
           height: 80px;
           border-radius: var(--radius-full);
-          background-color: rgba(76, 175, 80, 0.1);
+          background-color: rgba(183, 146, 82, 0.15);
           color: var(--color-accent);
           display: flex;
           align-items: center;
@@ -574,10 +581,18 @@ export default function Contribute({ initialTab = 'food' }) {
         }
 
         .bank-details-card {
-          background-color: var(--color-bg-alt);
+          background-color: #ffffff;
           padding: 2rem;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-lg);
           border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-md);
+          transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+        }
+
+        .bank-details-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-hover);
+          border-color: rgba(35, 79, 69, 0.15);
         }
 
         .bank-details-card h4, .funding-purpose-card h4 {

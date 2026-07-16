@@ -159,7 +159,7 @@ export default function About() {
           position: relative;
           width: 100%;
           max-width: 440px;
-          border-bottom: 6px solid var(--color-secondary);
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         @media (max-width: 768px) {
@@ -241,12 +241,12 @@ export default function About() {
           flex-shrink: 0;
         }
 
-        .bg-primary-light { background-color: rgba(10, 77, 140, 0.08); }
-        .bg-accent-light { background-color: rgba(76, 175, 80, 0.08); }
-        .bg-secondary-light { background-color: rgba(244, 180, 0, 0.12); }
+        .bg-primary-light { background-color: rgba(35, 79, 69, 0.08); }
+        .bg-accent-light { background-color: rgba(183, 146, 82, 0.08); }
+        .bg-secondary-light { background-color: rgba(183, 146, 82, 0.12); }
 
         .text-primary { color: var(--color-primary); }
-        .text-secondary { color: #B28200; }
+        .text-secondary { color: var(--color-accent-hover); }
         .text-accent { color: var(--color-accent); }
 
         .pillar-item h4 {
@@ -254,7 +254,7 @@ export default function About() {
           margin-bottom: 0.35rem;
           color: var(--color-text);
           font-family: var(--font-heading);
-          font-weight: 600;
+          font-weight: 700;
         }
 
         .pillar-item p {
