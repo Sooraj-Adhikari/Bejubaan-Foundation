@@ -63,7 +63,7 @@ export default function Footer() {
         {/* Brand column */}
         <div className="footer-column brand-column">
           <div className="footer-logo-area">
-            <img src="/logo.png" alt="Bejubaan Ann Seva Foundation Logo" className="footer-logo" />
+            <img src="/fav_icon_logo.png" alt="Bejubaan Ann Seva Foundation Logo" className="footer-logo" />
             <div className="footer-brand-info">
               <span className="footer-brand-title">Bejubaan</span>
               <span className="footer-brand-subtitle">Ann Seva Foundation</span>
