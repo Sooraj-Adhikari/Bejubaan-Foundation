@@ -400,7 +400,12 @@ export default function Footer() {
           padding: 1.75rem 0;
           border-top: 1px solid rgba(242, 231, 214, 0.12);
           font-size: 0.85rem;
-          color: rgba(242, 231, 214, 0.6);
+          color: rgba(242, 231, 214, 0.88);
+        }
+
+        .footer-bottom p {
+          color: rgba(242, 231, 214, 0.88);
+          margin-bottom: 0;
         }
 
         .bottom-container {
