@@ -184,14 +184,14 @@ export default function Navbar({ onDonateClick }) {
         }
 
         .nav-logo {
-          height: 48px;
+          height: 60px;
           width: auto;
           object-fit: contain;
           transition: height var(--transition-normal);
         }
 
         .navbar-header.scrolled .nav-logo {
-          height: 42px;
+          height: 54px;
         }
 
         .brand-info {
