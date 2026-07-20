@@ -423,6 +423,27 @@ export default function Footer() {
           }
         }
 
+        /* Mobile refinements */
+        @media (max-width: 767px) {
+          .footer-bottom {
+            padding: 1.5rem 1rem;
+          }
+
+          .bottom-container {
+            gap: 0.625rem;
+            text-align: center;
+          }
+
+          .footer-bottom p {
+            font-size: 0.82rem;
+            line-height: 1.5;
+          }
+
+          .made-with {
+            font-size: 0.82rem;
+          }
+        }
+
         .made-with {
           display: flex;
           align-items: center;
