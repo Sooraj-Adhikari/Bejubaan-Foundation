@@ -363,7 +363,7 @@ export default function Contribute({ initialTab = 'food' }) {
                         </div>
                       </div>
                       <p className="tax-info">
-                        * All contributions are eligible for receipt. Please email transaction copy to contact@bejubaanannsevafoundation.com to request yours.
+                        * All contributions are eligible for receipt. Please email transaction copy to admin@bejubaanannsevafoundation.com to request yours.
                       </p>
                     </div>
 
